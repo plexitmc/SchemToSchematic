@@ -1,10 +1,6 @@
-if (typeof nbt === 'undefined') {
-    nbt = require('./nbt');
-}
+if (typeof nbt === 'undefined') nbt = require('./nbt');
 
-if (typeof zlib === 'undefined') {
-    zlib = require('zlib');
-}
+if (typeof zlib === 'undefined') zlib = require('zlib');
 
 var blocksNamespace = {
 'minecraft:air':0,

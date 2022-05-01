@@ -1,17 +1,8 @@
 <!doctype html>
 <html>
     <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176109454-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'UA-176109454-1');
-        </script>
         
-        <title>Convert .Schem to .Schematic</title>
+        <title>Konverter din .schem fil.</title>
         
         <!-- https://github.com/kpanuragh/zlib -->
         <script src="zlib.js"></script>
@@ -39,7 +30,7 @@
                         var link = document.createElement('a');
                         link.href = window.URL.createObjectURL(blob);
                         link.download = name;
-                        link.innerHTML = 'Download ' + name;
+                        link.innerHTML = 'Download: ' + name;
                         link.click();
                         var li = document.createElement('li');
                         li.appendChild(link);
@@ -61,39 +52,65 @@
                 font-family: Arial, sans-serif;
             }
             
-            html {
-                height: 100%;
+            .main {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
             }
-            
+
             body {
-                background: #ddd;
+                background: #fff;
                 height: 100%;
                 margin: 0;
                 padding: 0;
             }
             
-            section {
-                background: white;
-                box-shadow: 0 0 5px #aaa;
-                height: 100%;
-                margin: auto;
-                width: 600px;
-                padding: 25px;
-            }
-            
             h1 {
                 font-size: 20px;
             }
+
+            .upload-btn-wrapper {
+                position: relative;
+                overflow: hidden;
+                display: inline-block;
+            }
+
+            .btn {
+                border: 2px solid #0050ff;
+                color: #0050ff;
+                background-color: white;
+                padding: 8px 20px;
+                border-radius: 8px;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .upload-btn-wrapper input[type=file] {
+                font-size: 100px;
+                position: absolute;
+                left: 0;
+                top: 0;
+                opacity: 0;
+                cursor: pointer;
+            }
+
+
         </style>
     </head>
     <body>
-        <section>
-            <h1>Convert .schem files to .schematic files</h1>
-            <p>Convert the new worledit 1.13+ .schem files to the legacy .schematic files</p>
-            <label for="file">Upload your .schem file here</label>: <input id="file" type="file" onchange="upload(this)" multiple/><br/>
-            <small>Privacy notice: All schematics uploaded stay on your local machine and aren't processed by any server</small>
+        <div class="main">
+            <img src="https://plexit.dk/images/server-logo.png" height="250"/>
+            <h1>Konverter dine <strong>.schem</strong> (1.13+) filer til <strong>.schematic</strong> (Legacy 1.8)</h1>
+            <p>Konverter din downloadede <strong>.schem</strong> filer til den gamle 1.8 filtype <strong>.schematic</strong></p>
+
+            <div class="upload-btn-wrapper">
+                <button class="btn">Upload dine filer</button>
+                <input id="file" type="file" onchange="upload(this)" multiple accept=".schem"/>
+            </div>
+
             <ul id="downloads"></ul>
             <p id="error"></p>
-        </scetion>
+        </div>
     </body>
 </html>
